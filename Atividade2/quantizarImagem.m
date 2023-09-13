@@ -35,30 +35,3 @@ function Erelat = calcularErroRelativo(imagem_original, imagem_quantizada)
     Erelat = norma_diferenca / norma_original;
 end
 
-% Carregue sua imagem aqui
-imagem_original = imread('sua_imagem.jpg');
-
-% Inicialize um vetor para armazenar os valores de erro relativo
-N_values = 2:256;
-Erelat_values = zeros(size(N_values));
-
-% Loop através de diferentes valores de N
-for i = 1:length(N_values)
-    N = N_values(i);
-
-    % Quantize a imagem
-    imagem_quantizada = quantizarImagem(imagem_original, N);
-
-    % Calcule o erro relativo e armazene-o no vetor
-    Erelat = calcularErroRelativo(imagem_original, imagem_quantizada);
-    Erelat_values(i) = Erelat;
-end
-
-% Plote o gráfico de Erelat em função de N
-figure;
-plot(N_values, Erelat_values, '-o');
-xlabel('N (Níveis de Cinza)');
-ylabel('Erro Relativo (Erelat)');
-title('Erro Relativo vs. Níveis de Cinza');
-grid on;
-
